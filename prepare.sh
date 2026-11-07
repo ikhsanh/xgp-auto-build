@@ -35,8 +35,7 @@ fi
 echo "add feeds"
 cat feeds.conf.default > feeds.conf
 echo "" >> feeds.conf
-echo "src-git qmodem https://github.com/FUjr/QModem.git;stable" >> feeds.conf
-# echo "src-git qmodem https://github.com/zzzz0317/QModem.git;v3.0.2" >> feeds.conf
+echo "src-git 5gmodem https://github.com/fildunsky/luci-app-5gmodem.git;master" >> feeds.conf
 echo "src-git istore https://github.com/linkease/istore;main" >> feeds.conf
 echo "update files"
 rm -rf files
@@ -64,7 +63,7 @@ echo "update feeds"
 ./scripts/feeds update -a || { echo "update feeds failed"; exit 1; }
 echo "install feeds"
 ./scripts/feeds install -a || { echo "install feeds failed"; exit 1; }
-./scripts/feeds install -a -f -p qmodem || { echo "install qmodem feeds failed"; exit 1; }
+./scripts/feeds install -a -f -p 5gmodem || { echo "install 5gmodem feeds failed"; exit 1; }
 
 if [ -L "package/zz-packages" ]; then
     echo "package/zz-packages is already a symlink"
