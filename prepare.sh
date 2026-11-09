@@ -5,8 +5,10 @@ free -h
 cat /proc/cpuinfo
 
 echo "update submodules"
-# git submodule update --init --recursive --remote || { echo "submodule update failed"; exit 1; }
 git submodule update --init --recursive || { echo "submodule init failed"; exit 1; }
+echo "pulling latest commit from main for xgp-v3-screen & luci-app-xgp-v3-screen"
+git submodule update --remote zz-packages/xgp-v3-screen || { echo "xgp-v3-screen update failed"; exit 1; }
+git submodule update --remote zz-packages/luci-app-xgp-v3-screen || { echo "luci-app-xgp-v3-screen update failed"; exit 1; }
 
 if [ -d "immortalwrt" ]; then
     echo "repo dir exists"
